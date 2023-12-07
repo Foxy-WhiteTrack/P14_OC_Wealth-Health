@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
-
-function EmployeeList() {
-
-    const navigate = useNavigate();
+export default function EmployeeList() {
 
     return (
         <main>
@@ -12,5 +8,3 @@ function EmployeeList() {
         </main>
     );
 }
-
-export default EmployeeList;

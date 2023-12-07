@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import "./Home.css";
 
+import Form from "../../components/Form/Form";
 
-function Home() {
-
-    const navigate = useNavigate();
+export default function Home() {
 
     return (
-        <main>
+        <main className="container">
 
+            <div className="body">
+                <Form />
+            </div>
         </main>
     );
 }
-
-export default Home;

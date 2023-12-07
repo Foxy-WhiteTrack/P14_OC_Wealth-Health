@@ -1,0 +1,17 @@
+input {
+    outline: 0px solid #000;
+    background-color: #e2e2e2;
+    outline-offset: 3px;
+    min-height: 30px;
+}
+
+.form-ctn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+label {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}

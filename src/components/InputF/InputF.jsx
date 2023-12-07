@@ -1,4 +1,7 @@
-function InputField({ id, label, type = "text", value, onChange, error }) {
+import React from 'react';
+import './InputF.css';
+
+export default function InputF({ id, label, type = "text", value, onChange, error }) {
 
     return (
         <div className={"form-ctn"}>
@@ -13,5 +16,3 @@ function InputField({ id, label, type = "text", value, onChange, error }) {
         </div>
     );
 }
-
-export default InputField;

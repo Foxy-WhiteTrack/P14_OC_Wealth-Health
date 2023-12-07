@@ -1,0 +1,47 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF;
+    justify-content: start;
+    text-align: center;
+    padding: 10px 30px;
+    width: 20vw;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 5px 5px black;
+    margin: 20px auto 0 auto;
+}
+
+.part-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+.form-ctn {
+    margin: 5px 0;
+}
+
+.adress {
+    width: 100%;
+    padding: 15px;
+    /* border: 2px solid black; */
+    border-top: 2px dashed black;
+    border-bottom: 2px dashed black;
+    /* box-shadow: 5px 5px black; */
+    margin: 20px 0;
+}
+
+button {
+    padding: 5px 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 5px 5px black;
+    background-color: #FFA07A;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 15px;
+}

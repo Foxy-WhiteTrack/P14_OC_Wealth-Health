@@ -1,17 +1,14 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
 
-function Error() {
-
-    const navigate = useNavigate();
+export default function Error() {
 
     return (
-        <main>
-            <div>404 Error</div>
-            <div>Cette page n'existe pas !</div>
-        </main>
+        <div className="error">
+            <Link to="/" className="error-link">
+                Retour
+            </Link>
+        </div>
     );
 }
-
-export default Error;
