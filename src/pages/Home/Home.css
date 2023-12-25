@@ -1,0 +1,10 @@
+.logo {
+    margin: 20px 0 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img {
+    border-radius: 30%;
+    box-shadow: 5px 5px 10px #000;
+}

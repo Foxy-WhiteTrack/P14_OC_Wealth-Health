@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputF.css';
 
-export default function InputF({ id, label, type = "text", value, onChange, error }) {
+export default function InputF({ id, label, type, value, onChange, error }) {
 
     return (
         <div className={"form-ctn"}>
