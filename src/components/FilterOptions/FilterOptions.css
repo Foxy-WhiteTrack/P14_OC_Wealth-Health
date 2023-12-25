@@ -1,0 +1,9 @@
+.left-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.left-filter #nbr {
+    max-width: 100px;
+}

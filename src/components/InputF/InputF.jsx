@@ -1,11 +1,12 @@
 import React from 'react';
 import './InputF.css';
 
-export default function InputF({ id, label, type, value, onChange, error }) {
+export default function InputF({ id, label, type, value, onChange, error, align }) {
+    const containerClassName = `input-ctn ${align === 'horizontal' ? 'horizontal' : 'vertical'}`;
 
     return (
-        <div className={"form-ctn"}>
-            <label >{label}</label>
+        <div className={containerClassName}>
+            <label>{label}</label>
             <input
                 type={type}
                 id={id}

@@ -5,7 +5,13 @@ input {
     min-height: 30px;
 }
 
-.form-ctn {
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.vertical {
     display: flex;
     flex-direction: column;
     width: 100%;

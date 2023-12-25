@@ -68,10 +68,12 @@ export default function Form() {
                 <InputF
                     id="firstName"
                     label="First Name"
+                    align="vertical"
                 />
                 <InputF
                     id="lastName"
                     label="Last Name"
+                    align="vertical"
                 />
                 <DatePick
                     id="birthday"
@@ -88,6 +90,7 @@ export default function Form() {
                         id="street"
                         label="Street"
                         type="text"
+                        align="vertical"
 
                         // value={formData.street}
                         onChange={onChange}
@@ -96,6 +99,7 @@ export default function Form() {
                         id="city"
                         label="City"
                         type="text"
+                        align="vertical"
 
                         // value={formData.city}
                         onChange={onChange}
@@ -104,10 +108,12 @@ export default function Form() {
                         id="state"
                         label="State"
                         options={states}
+                        haveLabel={true}
                     />
                     <InputF
                         id="zipcode"
                         label="Zip Code"
+                        align="vertical"
                     />
                 </div>
                 <Select
@@ -115,6 +121,7 @@ export default function Form() {
                     label="Department"
                     name="department"
                     options={departement}
+                    haveLabel={true}
 
                     value={formData.department}
                     onChange={onChange}
