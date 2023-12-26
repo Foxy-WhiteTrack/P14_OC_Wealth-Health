@@ -7,11 +7,10 @@ import Pagination from '../../components/Pagination/Pagination';
 
 import './EmployeeList.css';
 
-export default function EmployeeList() {
-    // Nombre d'éléments par page
-    const itemsPerPage = 10; // Nbr temporaire
+import { useAppContext } from '../../hooks/appContext';
 
-    // État pour suivre la page actuelle
+export default function EmployeeList() {
+    const { itemsPerPage } = useAppContext();
     const [currentPage, setCurrentPage] = useState(1);
 
     // Fonction pour gérer le changement de page
@@ -34,7 +33,7 @@ export default function EmployeeList() {
                 <EmployeeTable data={displayedData} />
                 <div className="bottom-zone">
                     <div className="current-pos">
-                        Showing {startIndex + 1} to {Math.min(endIndex, totalItems)} of {totalItems} entries
+                        Showing {startIndex + 1} to {Math.min(endIndex, itemsPerPage)} of {itemsPerPage} entries
                     </div>
                     <Pagination
                         totalItems={totalItems}

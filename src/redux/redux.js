@@ -1,40 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-const employeeList = localStorage.getItem('employeeList')
-    ? JSON.parse(localStorage.getItem('employeeList'))
-    : []
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    employeeList,
-    loading: false,
-    error: null,
-    success: false
-}
+    itemsPerPage: 10, // Définissez la valeur par défaut
+};
 
-const employeeSlice = createSlice({
-    name: 'employee',
+const itemSlice = createSlice({
+    name: 'itemSliceName',
     initialState,
     reducers: {
-        reset: (state) => {
-            state.loading = false
-            state.error = null
-            state.success = false
+        setItemsPerPage: (state, action) => {
+            state.itemsPerPage = action.payload;
         },
-        addEmployee: (state, action) => {
-            state.loading = true
-            try {
-                state.employeeList.push(action.payload)
-                localStorage.setItem('employeeList', JSON.stringify(state.employeeList))
-                state.loading = false
-                state.success = true
-            } catch (error) {
-                state.loading = false
-                state.error = error
-            }
-        }
-    }
-})
+    },
+});
 
-export const { reset, addEmployee } = employeeSlice.actions
-
-export default employeeSlice.reducer
+export const { setItemsPerPage } = itemSlice.actions;
+export default itemSlice.reducer;

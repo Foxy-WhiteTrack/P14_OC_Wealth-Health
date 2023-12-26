@@ -1,21 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import employeeReducer from './slice'
+import { configureStore } from '@reduxjs/toolkit';
+import itemReducer from './slice';
 
-const savedEmployees = localStorage.getItem('employees')
-
-const initialEmployees = savedEmployees ? JSON.parse(savedEmployees) : []
-
-const firstState = {
-    employee: {
-        employees: initialEmployees,
-    },
-}
-
-const store = configureStore({
+export default configureStore({
     reducer: {
-        employee: employeeReducer,
+        item: itemReducer,
     },
-    firstState,
-})
-
-export default store
+});

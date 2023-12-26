@@ -1,35 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
-import employeeMock from '../datas/employeeMock'
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    employees: employeeMock,
-}
-
-const employeeSlice = createSlice({
-    name: 'employee',
-    initialState,
+export const itemSlice = createSlice({
+    name: 'itemSliceName',
+    initialState: {
+        itemsPerPage: 10,
+    },
     reducers: {
 
-        initEmployees: (state, action) => {
-            state.employees = action.payload
-        },
-
-        addEmployee: (state, action) => {
-            state.employees.push(action.payload)
-            localStorage.setItem('employees', JSON.stringify(state.employees))
-        },
-
-        loadFromStorage: (state) => {
-            const savedEmployees = JSON.parse(localStorage.getItem('employees'))
-            state.employees =
-                savedEmployees && savedEmployees.length > 0
-                    ? savedEmployees
-                    : employeeMock
+        changeNbr: (state, action) => {
+            state.itemsPerPage = action.payload.itemsPerPage;
         },
     },
-})
+});
 
-export const { initEmployees, addEmployee, loadFromStorage } =
-    employeeSlice.actions
-
-export default employeeSlice.reducer
+export const { changeNbr } = itemSlice.actions;
+export default itemSlice.reducer;
