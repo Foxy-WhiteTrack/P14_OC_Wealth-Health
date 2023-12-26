@@ -1,0 +1,6 @@
+.bottom-zone {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    align-items: center;
+}

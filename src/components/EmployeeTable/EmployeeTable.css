@@ -26,3 +26,7 @@
     background-color: #93ac19;
     color: white;
 }
+
+.table th:hover {
+    background-color: #6f8711;
+}
