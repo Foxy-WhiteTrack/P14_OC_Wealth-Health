@@ -25,7 +25,7 @@ export default function FilterOptions() {
                     name="nbr"
                     options={nbrEntries}
                     haveLabel={false}
-                    value={itemsPerPage.toString()} // Assurez-vous que la valeur du Select correspond à itemsPerPage
+                    value={itemsPerPage.toString()}
                     onChange={handleEntriesChange}
                 />
                 <span> entries</span>

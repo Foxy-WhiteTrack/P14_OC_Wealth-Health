@@ -4,9 +4,16 @@ import InputF from "../InputF/InputF";
 
 import "./SearchFilter.css";
 
+import { useAppContext } from '../../hooks/appContext';
 
 
 export default function SearchFilter() {
+    const { search, updateSearchText } = useAppContext();
+
+    const onChange = (event) => {
+        const selectedTextValue = event.target.value;
+        updateSearchText(selectedTextValue);
+    };
 
     return (
         <div className="right-filter">
@@ -15,8 +22,8 @@ export default function SearchFilter() {
                 label="Search:"
                 type="text"
                 align="horizontal"
-
-            // onChange={onChange}
+                value={search}
+                onChange={onChange}
             />
         </div>
     );
