@@ -1,18 +1,18 @@
 export const nbrEntries = [
     {
         "name": "10",
-        "abbreviation": "1"
+        "abbreviation": "10"
     },
     {
         "name": "25",
-        "abbreviation": "2"
+        "abbreviation": "25"
     },
     {
         "name": "50",
-        "abbreviation": "3"
+        "abbreviation": "50"
     },
     {
         "name": "100",
-        "abbreviation": "4"
+        "abbreviation": "100"
     },
 ];
