@@ -3,10 +3,15 @@ import "./Header.css";
 
 import { Link, useLocation } from "react-router-dom";
 
+/**
+ * Composant de l'en-tête de l'application.
+ * @component
+ * @returns {JSX.Element} Le composant de l'en-tête.
+ */
 export default function Header() {
-
     const location = useLocation();
 
+    // Vérifier si la page actuelle est la page des employés
     const isEmployeesPage = location.pathname.endsWith('/employees');
 
     return (
@@ -34,5 +39,4 @@ export default function Header() {
             )}
         </div>
     );
-
 }

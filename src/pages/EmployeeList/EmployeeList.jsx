@@ -12,6 +12,14 @@ import './EmployeeList.css';
 
 import { useAppContext } from '../../hooks/appContext';
 
+/**
+ * Composant pour afficher la liste des employés avec des fonctionnalités de filtrage et de pagination.
+ *
+ * @component
+ * @example
+ * // Utilisation du composant EmployeeList
+ * <EmployeeList />
+ */
 export default function EmployeeList() {
     const { itemsPerPage } = useAppContext();
     const [currentPage, setCurrentPage] = useState(1);
@@ -20,13 +28,19 @@ export default function EmployeeList() {
 
     const { employees } = useAppContext();
 
-    // Fonction pour gérer le changement de page
+    /**
+     * Fonction pour gérer le changement de page.
+     *
+     * Cette fonction est appelée lorsque l'utilisateur change de page dans la pagination.
+     *
+     * @param {number} page - Le numéro de la page sélectionnée.
+     */
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
 
     // sens du flux des données
-    // allEmployees => filterData => totalItesm => paginatedData
+    // allEmployees => filterData => totalItems => paginatedData
 
     const allEmployees = [...employees, ...employeeMock];
 
@@ -49,8 +63,6 @@ export default function EmployeeList() {
     const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
 
     const paginatedData = filterData.slice(startIndex, endIndex);
-
-
 
     return (
         <main>

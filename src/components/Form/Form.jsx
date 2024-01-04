@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import Modal from 'react-modal';
 
 import "./Form.css";
@@ -11,8 +11,17 @@ import { departments } from "../../datas/department";
 
 import { useAppContext } from '../../hooks/appContext';
 
+/**
+ * Composant de formulaire pour ajouter un nouvel employé.
+ *
+ * Ce composant affiche un formulaire permettant à l'utilisateur d'ajouter un nouvel employé en saisissant des informations telles que le prénom, le nom, la date de naissance, etc.
+ *
+ * @component
+ * @example
+ * // Utilisation du composant Form
+ * <Form />
+ */
 export default function Form() {
-
     const { addEmployee } = useAppContext();
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -40,18 +49,37 @@ export default function Form() {
         zipCode: "",
     })
 
-    // événement de soumission du formulaire
+    /**
+     * Fonction de gestion de changement de champ de saisie.
+     *
+     * Cette fonction est appelée chaque fois qu'un champ de saisie est modifié.
+     *
+     * @param {Object} e - L'événement de changement.
+     */
     const onChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
+    /**
+     * Fonction de soumission du formulaire.
+     *
+     * Cette fonction est appelée lorsque l'utilisateur soumet le formulaire. Elle enregistre les données du formulaire et ouvre une modale de confirmation.
+     *
+     * @param {Object} event - L'événement de soumission du formulaire.
+     */
     const submit = async (event) => {
         event.preventDefault();
         saveDatas(event);
     };
 
-    // sauver les données du formulaire
+    /**
+     * Fonction pour sauvegarder les données du formulaire.
+     *
+     * Cette fonction ajoute les données du formulaire à la liste des employés et ouvre une modale de confirmation.
+     *
+     * @param {Object} e - L'événement de sauvegarde.
+     */
     async function saveDatas(e) {
         addEmployee(formData);
 

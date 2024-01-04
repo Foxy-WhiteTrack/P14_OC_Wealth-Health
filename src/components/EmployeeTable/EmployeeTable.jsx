@@ -3,6 +3,13 @@ import { useTable, useSortBy } from 'react-table';
 
 import "./EmployeeTable.css";
 
+/**
+ * Composant de la table des employés.
+ * @component
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Array} props.data - Les données à afficher dans la table.
+ * @returns {JSX.Element} Le composant de la table des employés.
+ */
 export default function EmployeeTable({ data }) {
 
     const columns = React.useMemo(
