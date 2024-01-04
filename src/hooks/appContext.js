@@ -15,8 +15,15 @@ export const AppProvider = ({ children }) => {
     setSearch(newSearchText);
   };
 
+  const [employees, setEmployees] = useState([]);
+
+  const addEmployee = (employee) => {
+    setEmployees((prevEmployees) => [...prevEmployees, employee]);
+  };
+
+
   return (
-    <AppContext.Provider value={{ itemsPerPage, updateItemsPerPage, search, updateSearchText }}>
+    <AppContext.Provider value={{ itemsPerPage, updateItemsPerPage, search, updateSearchText, employees, addEmployee }}>
       {children}
     </AppContext.Provider>
   );

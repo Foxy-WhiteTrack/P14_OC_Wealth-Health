@@ -4,3 +4,10 @@
     padding: 10px 40px;
     align-items: center;
 }
+
+.filterZone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}

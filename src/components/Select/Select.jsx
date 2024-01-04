@@ -1,7 +1,7 @@
 import React from "react";
 import "./Select.css";
 
-export default function Select({ id, label, options, haveLabel, onChange }) {
+export default function Select({ id, label, options, haveLabel, onChange, name, selected }) {
     const handleSelectChange = (event) => {
         onChange(event);
     };
@@ -10,9 +10,9 @@ export default function Select({ id, label, options, haveLabel, onChange }) {
             {haveLabel &&
                 <label >{label}</label>
             }
-            <select id={id} onChange={handleSelectChange}>
+            <select id={id} name={name} onChange={handleSelectChange} value={selected}>
                 {options.map(option => (
-                    <option key={option.abbreviation} value={option.name}>{option.name}</option>
+                    <option key={option.abbreviation} name={option.name} value={option.abbreviation} >{option.name}</option>
                 ))}
             </select>
         </div>

@@ -1,22 +1,22 @@
-export const departement = [
+export const departments = [
     {
         "name": "Sales",
-        "abbreviation": "sales"
+        "abbreviation": "Sales"
     },
     {
         "name": "Marketing",
-        "abbreviation": "marketing"
+        "abbreviation": "Marketing"
     },
     {
         "name": "Engineering",
-        "abbreviation": "engineering"
+        "abbreviation": "Engineering"
     },
     {
         "name": "Human Resources",
-        "abbreviation": "human-resources"
+        "abbreviation": "Human Resources"
     },
     {
         "name": "Legal",
-        "abbreviation": "legal"
+        "abbreviation": "Legal"
     }
 ]

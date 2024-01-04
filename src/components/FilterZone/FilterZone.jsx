@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterOptions from '../../components/FilterOptions/FilterOptions';
-import SearchFilter from '../../components/SearchFilter/SearchFilter';
+import SearchFilter from '../SearchFilter/SearchFilter';
 
 import "./FilterZone.css";
 

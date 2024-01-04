@@ -1,20 +1,19 @@
-import React, { useState, useRef } from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react"
 import Modal from 'react-modal';
 
 import "./Form.css";
 
 import InputF from "../InputF/InputF";
 import Select from "../Select/Select";
-import DatePick from "../DatePick/DatePick";
 
 import { states } from "../../datas/states";
-import { departement } from "../../datas/department";
+import { departments } from "../../datas/department";
 
-// import Modal from "../Modal/Modal"
-import { handleOpenModal } from "../../utils/Utils"
+import { useAppContext } from '../../hooks/appContext';
 
 export default function Form() {
+
+    const { addEmployee } = useAppContext();
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -25,63 +24,77 @@ export default function Form() {
         setModalIsOpen(false);
     };
 
+    // initialiser les valeurs par défaut des champs select
+    const firstState = states[0].abbreviation;
+    const firstDepartment = departments[0].abbreviation;
+
     const [formData, setFormData] = useState({
-        firstname: "",
-        lastname: "",
-        birthdate: "",
-        starter: "",
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        startDate: "",
+        department: firstDepartment,
         street: "",
         city: "",
-        state: "",
-        zip: "",
-        department: "",
+        state: firstState,
+        zipCode: "",
     })
 
     // événement de soumission du formulaire
     const onChange = (e) => {
-        const { name, value } = e.target
-        setFormData((initialDatas) => ({ ...initialDatas, [name]: value }))
-    }
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
+
+    const submit = async (event) => {
+        event.preventDefault();
+        saveDatas(event);
+    };
 
     // sauver les données du formulaire
     async function saveDatas(e) {
-        e.preventDefault();
-
-        const newEmployee = { ...formData }
-        console.log(newEmployee)
-
-        // récupérer les datas du localStorage
-        const employees = JSON.parse(localStorage.getItem("employees")) || []
-        employees.push(newEmployee)
-
-        // sauvegarder les datas dans le localStorage
-        localStorage.setItem("employees", JSON.stringify(employees))
+        addEmployee(formData);
 
         // Ouvrir la modale
         openModal();
     }
 
-
     return (
-        <form className="form">
+        <form className="form" onSubmit={submit}>
             <div className="part-form">
                 <InputF
                     id="firstName"
                     label="First Name"
                     align="vertical"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={onChange}
                 />
                 <InputF
                     id="lastName"
                     label="Last Name"
                     align="vertical"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={onChange}
                 />
-                <DatePick
-                    id="birthday"
+                <InputF
+                    id="dateOfBirth"
+                    type="date"
                     label="Date of Birth"
+                    align="vertical"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
+                    onChange={onChange}
                 />
-                <DatePick
-                    id="startdate"
+                <InputF
+                    id="startDate"
                     label="Start Date"
+                    name="startDate"
+                    value={formData.startDate}
+                    onChange={onChange}
+                    type="date"
+                    align="vertical"
                 />
             </div>
             <div className="part-form">
@@ -91,8 +104,8 @@ export default function Form() {
                         label="Street"
                         type="text"
                         align="vertical"
-
-                        // value={formData.street}
+                        name="street"
+                        value={formData.street}
                         onChange={onChange}
                     />
                     <InputF
@@ -100,8 +113,9 @@ export default function Form() {
                         label="City"
                         type="text"
                         align="vertical"
+                        name="city"
 
-                        // value={formData.city}
+                        value={formData.city}
                         onChange={onChange}
                     />
                     <Select
@@ -109,28 +123,33 @@ export default function Form() {
                         label="State"
                         options={states}
                         haveLabel={true}
+                        name="state"
+                        value={formData.state}
+                        onChange={onChange}
                     />
                     <InputF
                         id="zipcode"
                         label="Zip Code"
                         align="vertical"
+                        name="zipCode"
+
+                        value={formData.zipCode}
+                        onChange={onChange}
                     />
                 </div>
                 <Select
-                    id="departement"
+                    id="department"
                     label="Department"
-                    name="department"
-                    options={departement}
+                    options={departments}
                     haveLabel={true}
-
+                    name="department"
                     value={formData.department}
                     onChange={onChange}
                 />
 
-
             </div>
             <div>
-                <button className="modal-btn" onClick={saveDatas}>Save</button>
+                <button className="modal-btn" type="submit">Save</button>
                 <Modal
                     className="modal"
                     isOpen={modalIsOpen}

@@ -5,6 +5,9 @@ import EmployeeTable from '../../components/EmployeeTable/EmployeeTable';
 import FilterZone from '../../components/FilterZone/FilterZone';
 import Pagination from '../../components/Pagination/Pagination';
 
+import FilterOptions from '../../components/FilterOptions/FilterOptions';
+import SearchFilter from '../../components/SearchFilter/SearchFilter';
+
 import './EmployeeList.css';
 
 import { useAppContext } from '../../hooks/appContext';
@@ -15,34 +18,57 @@ export default function EmployeeList() {
 
     const { search } = useAppContext();
 
+    const { employees } = useAppContext();
+
     // Fonction pour gérer le changement de page
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
 
-    // Calcul du nombre total d'éléments
-    const totalItems = employeeMock.length;
+    // sens du flux des données
+    // allEmployees => filterData => totalItesm => paginatedData
+
+    const allEmployees = [...employees, ...employeeMock];
+
+    const filterData = allEmployees.filter((employee) =>
+        employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
+        employee.lastName.toLowerCase().includes(search.toLowerCase()) ||
+        employee.department.toLowerCase().includes(search.toLowerCase()) ||
+        employee.street.toLowerCase().includes(search.toLowerCase()) ||
+        employee.city.toLowerCase().includes(search.toLowerCase()) ||
+        employee.state.toLowerCase().includes(search.toLowerCase())
+    );
+
+    // total d'éléments
+    const totalItems = filterData.length;
 
     // Calcul des éléments à afficher sur la page actuelle
     const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    // cette ligne sert à 
-    const displayedData = employeeMock.slice(startIndex, endIndex);
 
-    const filterData = displayedData.filter((employee) =>
-        employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
-        employee.lastName.toLowerCase().includes(search.toLowerCase())
-    );
+    // const endIndex = startIndex + itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+    const paginatedData = filterData.slice(startIndex, endIndex);
+
 
 
     return (
         <main>
             <div id="employee-div" className="container">
-                <FilterZone />
-                <EmployeeTable data={filterData} />
+                <div className='filterZone'>
+                    <div className="ctn-nbr-entries">
+                        <FilterOptions
+                            onPageChange={handlePageChange}
+                        />
+                    </div>
+                    <div>
+                        <SearchFilter />
+                    </div>
+                </div>
+                <EmployeeTable data={paginatedData} />
                 <div className="bottom-zone">
                     <div className="current-pos">
-                        Showing {startIndex + 1} to {Math.min(endIndex, itemsPerPage)} of {itemsPerPage} entries
+                        Showing {startIndex + 1} to {endIndex} of {totalItems} entries
                     </div>
                     <Pagination
                         totalItems={totalItems}

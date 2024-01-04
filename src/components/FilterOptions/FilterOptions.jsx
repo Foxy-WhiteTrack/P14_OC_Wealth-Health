@@ -7,11 +7,12 @@ import { useAppContext } from '../../hooks/appContext';
 
 import { nbrEntries } from "../../datas/nbrEntries";
 
-export default function FilterOptions() {
+export default function FilterOptions({ onPageChange }) {
     const { itemsPerPage, updateItemsPerPage } = useAppContext();
 
     const handleEntriesChange = (event) => {
         const selectedValue = parseInt(event.target.value, 10);
+        onPageChange(1);
         updateItemsPerPage(selectedValue);
     };
 
@@ -27,6 +28,7 @@ export default function FilterOptions() {
                     haveLabel={false}
                     value={itemsPerPage.toString()}
                     onChange={handleEntriesChange}
+                    selected={itemsPerPage.toString()}
                 />
                 <span> entries</span>
             </div>
