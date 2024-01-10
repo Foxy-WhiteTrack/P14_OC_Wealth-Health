@@ -1,6 +1,7 @@
 import React from "react";
 import "./FilterOptions.css";
-import Select from "../Select/Select";
+// import Select from "../Select/Select";
+import { Select } from "ot-select-component";
 
 import { useAppContext } from '../../hooks/appContext';
 

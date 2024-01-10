@@ -4,7 +4,8 @@ import Modal from 'react-modal';
 import "./Form.css";
 
 import InputF from "../InputF/InputF";
-import Select from "../Select/Select";
+// import Select from "../Select/Select";
+import { Select } from "ot-select-component";
 
 import { states } from "../../datas/states";
 import { departments } from "../../datas/department";
